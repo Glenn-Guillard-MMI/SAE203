@@ -11,19 +11,23 @@
         <form action='inscription.php' method='post'>
         Prénom : 
         <br> 
-        <input type='text' name='first_name'>
+
+        <input type='text' name='first_name' <?php if(isset($_POST['first_name'])) { echo "value = '" .$_POST['first_name']."'"; } ?> >
         <br>  
         Nom : 
         <br> 
-        <input type='text' name='last_name'>
+        <input type='text' name='last_name'<?php if(isset($_POST['last_name'])) { echo "value = '" .$_POST['last_name']."'"; } ?>>
         <br>  
+
         Date de naissance : 
         <br> 
-        <input type='date' name='birth'>
+        <input type='date' name='birth' <?php if(isset($_POST['birth'])) { echo "value = '" .$_POST['birth']."'"; } ?>>
+        
+        
         <br>  
         Email : 
         <br> 
-        <input type='email' name='email'>
+        <input type='email' name='email' <?php if(isset($_POST['email'])) { echo "value = '" .$_POST['email']."'"; } ?>>
         <br>  
         Mots de passe : 
         <br> 
