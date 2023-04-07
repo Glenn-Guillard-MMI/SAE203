@@ -8,10 +8,10 @@
 <body>
     <div>
         <h2>Nouveau compte :</h2>
-        <form action='sae.php' method='post'>
+        <form action='inscription.php' method='post'>
         PrÃ©nom : 
         <br> 
-        <input type='text' name='first_name'>
+        <input type='text' name='first_name' <?php echo 'lal'  ?>>
         <br>  
         Nom : 
         <br> 
