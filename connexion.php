@@ -13,7 +13,7 @@
         <br> 
         Email : 
         <br> 
-        <input type='email' name='email'>
+        <input type='email' name='email' <?php if(isset($_POST['email'])) { echo "value = '" .$_POST['email']."'"; } ?>>
         <br>  
         Mots de passe : 
         <br> 
