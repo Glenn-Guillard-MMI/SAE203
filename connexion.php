@@ -8,6 +8,7 @@
 </head>
 <body>
     <div>
+    
         <h2>Connexion :</h2>
         <form action='connexion.php' method='post'>
         <br> 
@@ -22,7 +23,15 @@
         </form>
     </div>
     <?php
-        session_start();
+session_start();
+
+if (isset( $_SESSION["enregistrer"])){
+    echo  $_SESSION["enregistrer"];
+    session_destroy(); 
+}
+
+
+
 
         $link = mysqli_connect("localhost","root","","bdd_sae") ;
         if (!empty($_POST['email']) && !empty($_POST['password'])) {

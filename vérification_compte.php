@@ -9,9 +9,10 @@ $link = mysqli_connect("localhost","root","","bdd_sae") ;
  $query = "INSERT INTO users (first_name, last_name, birth, email, password) VALUES ('$first_name', '$last_name', '$birth', '$email', '$password') ;" ;    
  mysqli_query($link, $query) ;
  mysqli_close($link);
- session_destroy(); 
+session_start();
+
+ $_SESSION["enregistrer"] = "Votre compte a bien était enregister";
  header("Location:connexion.php");
- 
 }
 else{
 session_start();
@@ -19,6 +20,8 @@ session_start();
     $_SESSION['l_name']= $_POST['last_name'] ;
     $_SESSION['birth']= $_POST['birth'] ;
     $_SESSION['email']= $_POST['email'] ;
+ $_SESSION["message"] = "Une erreure est survenue lors de l'envoie du formulair, <br> try again";
     header("Location:inscription.php");
+    
 }
 ?>

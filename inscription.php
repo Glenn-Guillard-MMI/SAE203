@@ -55,6 +55,12 @@
         <input type='password' name='password'>
         <input type='submit'>
         </form>
+        <?php 
+        if (isset( $_SESSION["message"])){
+            echo  $_SESSION["message"];
+        }
+        ?>
     </div>
+
 </body>
 </html>
