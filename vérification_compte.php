@@ -12,6 +12,10 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
             session_start();
             $_SESSION["message"] = "Un Email est déjà enregister";
             mysqli_close($link);
+            $_SESSION['f_name']= $_POST['first_name'] ;
+            $_SESSION['l_name']= $_POST['last_name'] ;
+            $_SESSION['birth']= $_POST['birth'] ;
+            $_SESSION['email']= $_POST['email'] ;
             header("Location:inscription.php");
     }
 
