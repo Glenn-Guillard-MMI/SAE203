@@ -49,7 +49,7 @@
         
         Mots de passe : 
         <br> 
-        <input type='password' name='password' required pattern="[a-zA-Z0-9]+">
+        <input type='password' name='password' required>
         <input type='submit'>
         </form>
         <?php 
