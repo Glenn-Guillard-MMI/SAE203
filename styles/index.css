@@ -1,0 +1,62 @@
+.text_form {
+    text-align: center;
+    font-size: 20px;
+}
+
+#div_form {
+    position: absolute;
+    left: 44%;
+    top: 30%;
+}
+
+#boutton_connecter {
+    margin-left: 29px;
+    height: 25px;
+    width: 150px;
+    background-color: #0f273b;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor:pointer;
+}
+
+nav {
+    background-color: #0f273b;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 100px;
+}
+
+#logo_univ {
+    width: 250px;
+    height: 80px;
+    margin-left: 42%;
+    margin-right: auto;
+}
+
+#creation_compte {
+    position: absolute;
+    top: 90%;
+    left: 80%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#creation_compte_text {
+    font-size: 30px;
+    text-decoration: none;
+    color: #0a4c82;
+}
+
+#creation_compte_text:hover {
+    color: red;
+}
+
+.champ {
+    height: 20px;
+    width: 200px;
+}
