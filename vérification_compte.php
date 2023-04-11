@@ -58,7 +58,7 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         mysqli_close($link);
         session_start();
         $_SESSION["enregistrer"] = "Votre compte a bien était enregister";
-        header("Location:connexion.php");
+        header("Location: index.php");
 
     }
 
