@@ -43,13 +43,24 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         $_SESSION["message"] = "Votre nom ou prenom possède des caractéres interdit";
         exit();
 
+    }     
+
+    elseif (!strtotime($_POST['birth']) == TRUE)
+    {
+        header("Location: inscription.php");
+        session_start();
+        mysqli_close($link);
+        $_SESSION["message"] = "Votre date de naissance posséde une erreur";
+        exit();   
     }
+
+    
 
     else
 
     {
-        $first_name = $_POST['first_name'] ;
-        $last_name = $_POST['last_name'] ;
+        $first_name = ucfirst(strtolower($_POST['first_name'])) ;
+        $last_name = ucfirst(strtolower($_POST['last_name'])) ;
         $birth = $_POST['birth'] ;
         $email = $_POST['email'] ;
         $password = hash("sha256",$_POST['password'], false) ;

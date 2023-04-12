@@ -63,5 +63,24 @@
     <div id="connexion_compte">
         <a id="connexion_compte_text" href="index.php">Se connecter</a>
     </div>
+
+<?php
+if (isset( $_SESSION["message"])){
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<br>";
+    echo "<p>". $_SESSION["message"] ."</p>";
+}
+
+?>
+
 </body>
 </html>
