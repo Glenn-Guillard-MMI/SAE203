@@ -2,17 +2,30 @@
 if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['birth']) && !empty($_POST['email']) && !empty($_POST['password'])) 
 
 {
+        // récup des données pour les mettre dans des session
+        session_start();
         $_SESSION['email'] = $_POST['email'] ;
         $email=$_POST['email'] ;
         $_SESSION['f_name']= $_POST['first_name'] ;
         $_SESSION['l_name']= $_POST['last_name'] ;
         $_SESSION['birth']= $_POST['birth'] ;
-        $link = mysqli_connect("localhost","root","","bdd_sae") ;
+
+        //connexions à la base de donnée 
+        require "connection_sql.php";
+
+        //Utilise un select pour le premier if (mail)
         $verif_compte = "SELECT email FROM users WHERE email = '$email'";
         $exist_mail = mysqli_query($link, $verif_compte) ;    
+        
+        //récupération des fonction (obligatoire)
         require_once 'fonction.php';
-        session_start();
 
+        
+       
+
+
+
+        // Vérification de mail pour éviter les doublons
         if(mysqli_num_rows($exist_mail) >=1)
         {
                 $_SESSION["message_mail"] = "Un Email est déjà enregister";
@@ -27,22 +40,18 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
 
 
 
+        // Vérification si une personne reussie a rentrer autre chose que un mail
+        if (!filter_var($_SESSION['$email'], FILTER_VALIDATE_EMAIL))
+        {
+                $_SESSION["message_inc"] = "Votre email est incorrect";
 
+        
+        }
+        else
+        {
+            $_SESSION["message_inc"] = NULL;
 
-
-
-
-    if (!filter_var($_SESSION['$email'], FILTER_VALIDATE_EMAIL))
-    {
-            $_SESSION["message_inc"] = "Votre email est incorrect";
-
-    
-    }
-    else
-    {
-        $_SESSION["message_inc"] = NULL;
-
-    }
+        }
 
 
 
@@ -50,57 +59,73 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
 
     
 
-  
- if(car_interdit($_SESSION['l_name']))
+        //Vérification des caractéres spéciaux dans le nom 
+        if(car_interdit($_SESSION['l_name']))
 
-    {
-        $_SESSION["message_l_name"] = "Caractères spéciaux interdisent";
+            {
+                $_SESSION["message_l_name"] = "Caractères spéciaux interdisent";
 
-    }     
-    else
-    {
-        $_SESSION["message_l_name"] = NULL;
+            }     
+            else
+            {
+                $_SESSION["message_l_name"] = NULL;
 
-    }
+            }
 
     
     
     
-    
-    if(car_interdit($_SESSION['f_name']))
+        //Vérification des caractéres spéciaux dans le prénom
+        if(car_interdit($_SESSION['f_name']))
 
-    {
-        $_SESSION["message_f_name"] = "Caractères spéciaux interdisent";
+            {
+                $_SESSION["message_f_name"] = "Caractères spéciaux interdisent";
 
-    }     
-    else
-    {
-        $_SESSION["message_f_name"] = NULL;
+            }     
+        else
+            {
+                $_SESSION["message_f_name"] = NULL;
 
-    }
+            }
    
 
-    if (!strtotime($_POST['birth']) == TRUE)
-    {
-        $_SESSION["message_birth"] = "Date de naissance invalide";
 
-    }
-    else
-    {
-        $_SESSION["message_birth"] = NULL;
 
-    }
+        // vérification de la date de naissance
+        if (!strtotime($_POST['birth']) == TRUE)
+            {
+                $_SESSION["message_birth"] = "Date de naissance invalide";
 
-    if (!mdp($_POST['password']))
-    {
-        header("Location: inscription.php");
-        session_start();
-        mysqli_close($link);
-        $_SESSION["message"] = "Votre mdp est invalide";
-        exit();
-    }
+            }
+        else
+            {
+                $_SESSION["message_birth"] = NULL;
 
-    else
+            }
+
+
+
+         // vérification du mot de passe
+        if (!mdp($_POST['password']))
+        {
+            $_SESSION["mdp_error"] = "Mot de passe invalide";
+        }
+        else{
+
+            $_SESSION["mdp_error"] = NULL;
+
+        }
+
+
+
+        if (isset( $_SESSION["message_mail"]) || isset( $_SESSION["message_inc"]) || isset( $_SESSION["message_l_name"]) ||isset( $_SESSION["message_f_name"]) || isset( $_SESSION["message_birth"]) || isset( $_SESSION["mdp_error"]) )
+   
+        {
+            header("Location: inscription.php");
+            exit();
+        }
+   
+        else
 
     {
         $first_name = ucfirst(strtolower($_POST['first_name'])) ;

@@ -16,15 +16,18 @@
         <h1>Inscription</h1>
     </div>
     <div class="conatainer">
-        <form id="formulaire" action='vérification_compte.php' method='post'>
-            <div id="div_form">
-                <div id="div_nom_prenom">
-                    <p for="nom" class="text_form">Nom : </p>
-                    <input class="champ" type="text" name="first_name"  <?php 
-                        session_start();     
-                        if(isset( $_SESSION['f_name'])) 
-                        {echo htmlentities("value = " . $_SESSION['f_name']);}   
-                        ?>>
+    <form id="formulaire" action='vérification_compte.php' method='post'>
+        <div id="div_form">
+            <div id="div_nom_prenom">
+                <p for="nom" class="text_form">Nom : </p>
+
+                <input class="champ" type="text" name="first_name"  
+                <?php 
+                    session_start();     
+                    if(isset( $_SESSION['f_name'])) 
+                    {echo htmlentities("value = " . $_SESSION['f_name']);}   
+                    ?>
+                >
                        
                     <br>
                     <?php if(isset( $_SESSION["message_f_name"])) 
@@ -58,6 +61,11 @@
          if(isset($_SESSION['email'])) {
             echo htmlentities("value = " .$_SESSION['email']);}    
         ?> >
+
+
+
+
+
                     <br>
                     <br>
                 </div>
