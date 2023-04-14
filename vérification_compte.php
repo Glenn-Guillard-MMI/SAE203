@@ -20,7 +20,10 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         }
         else
         {
-            mysqli_close($link);}
+            mysqli_close($link);
+            $_SESSION["message_mail"] = NULL;
+        
+        }
 
 
 
@@ -31,13 +34,13 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
 
     if (!filter_var($_SESSION['$email'], FILTER_VALIDATE_EMAIL))
     {
-            $_SESSION["message"] = "Votre email est incorrect";
+            $_SESSION["message_inc"] = "Votre email est incorrect";
 
     
     }
     else
     {
-        $_SESSION["message"] = NULL;
+        $_SESSION["message_inc"] = NULL;
 
     }
 
@@ -67,24 +70,28 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
     if(car_interdit($_SESSION['f_name']))
 
     {
-        header("Location: inscription.php");
-        session_start();
-        mysqli_close($link);
         $_SESSION["message_f_name"] = "Caractères spéciaux interdisent";
-        exit();
 
-    }    
-
-    elseif (!strtotime($_POST['birth']) == TRUE)
+    }     
+    else
     {
-        header("Location: inscription.php");
-        session_start();
-        mysqli_close($link);
-        $_SESSION["message"] = "Votre date de naissance posséde une erreur";
-        exit();   
+        $_SESSION["message_f_name"] = NULL;
+
+    }
+   
+
+    if (!strtotime($_POST['birth']) == TRUE)
+    {
+        $_SESSION["message_birth"] = "Date de naissance invalide";
+
+    }
+    else
+    {
+        $_SESSION["message_birth"] = NULL;
+
     }
 
-    elseif (!mdp($_POST['password']))
+    if (!mdp($_POST['password']))
     {
         header("Location: inscription.php");
         session_start();
