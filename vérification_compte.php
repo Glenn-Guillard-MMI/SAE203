@@ -2,7 +2,7 @@
 if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['birth']) && !empty($_POST['email']) && !empty($_POST['password'])) 
 
 {
-        $_SESSION['$email'] = $_POST['email'] ;
+        $_SESSION['email'] = $_POST['email'] ;
         $email=$_POST['email'] ;
         $_SESSION['f_name']= $_POST['first_name'] ;
         $_SESSION['l_name']= $_POST['last_name'] ;
@@ -11,39 +11,69 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         $verif_compte = "SELECT email FROM users WHERE email = '$email'";
         $exist_mail = mysqli_query($link, $verif_compte) ;    
         require_once 'fonction.php';
+        session_start();
+
+        if(mysqli_num_rows($exist_mail) >=1)
+        {
+                $_SESSION["message_mail"] = "Un Email est déjà enregister";
+                mysqli_close($link);
+        }
+        else
+        {
+            mysqli_close($link);}
+
+
+
+
+
+
 
 
     if (!filter_var($_SESSION['$email'], FILTER_VALIDATE_EMAIL))
     {
-            header("Location: inscription.php");
-            session_start();
             $_SESSION["message"] = "Votre email est incorrect";
-            mysqli_close($link);
-            exit();
+
     
     }
-
-
-    elseif(mysqli_num_rows($exist_mail) >=1)
+    else
     {
-            session_start();
-            $_SESSION["message"] = "Un Email est déjà enregister";
-            header("Location: inscription.php");
-            mysqli_close($link);
-            exit();
+        $_SESSION["message"] = NULL;
+
     }
 
+
+
+
+
+    
+
   
-    elseif(car_interdit($_SESSION['f_name']) || car_interdit($_SESSION['l_name']))
+ if(car_interdit($_SESSION['l_name']))
+
+    {
+        $_SESSION["message_l_name"] = "Caractères spéciaux interdisent";
+
+    }     
+    else
+    {
+        $_SESSION["message_l_name"] = NULL;
+
+    }
+
+    
+    
+    
+    
+    if(car_interdit($_SESSION['f_name']))
 
     {
         header("Location: inscription.php");
         session_start();
         mysqli_close($link);
-        $_SESSION["message"] = "Votre nom ou prenom possède des caractéres interdit";
+        $_SESSION["message_f_name"] = "Caractères spéciaux interdisent";
         exit();
 
-    }     
+    }    
 
     elseif (!strtotime($_POST['birth']) == TRUE)
     {
@@ -54,7 +84,14 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         exit();   
     }
 
-    
+    elseif (!mdp($_POST['password']))
+    {
+        header("Location: inscription.php");
+        session_start();
+        mysqli_close($link);
+        $_SESSION["message"] = "Votre mdp est invalide";
+        exit();
+    }
 
     else
 
@@ -73,13 +110,22 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
 
     }
 
-   
-
-
-    
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 else
 {
