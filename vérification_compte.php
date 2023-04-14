@@ -128,12 +128,12 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         else
 
     {
-        require_once "connection_sql.php";
         $first_name = ucfirst(strtolower($_POST['first_name'])) ;
         $last_name = ucfirst(strtolower($_POST['last_name'])) ;
         $birth = $_POST['birth'] ;
         $email = $_POST['email'] ;
         $password = hash("sha256",$_POST['password'], false) ;
+        require "connection_sql.php";
         $query = "INSERT INTO users (first_name, last_name, birth, email, password) VALUES ('$first_name', '$last_name', '$birth', '$email', '$password')" ;    
         mysqli_query($link, $query) ;
         mysqli_close($link);
