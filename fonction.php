@@ -53,10 +53,11 @@ function mdp($mot)
 {
 if (strlen($mot)>=6 && cara($mot) && num($mot))
 {
-echo "MDP bon";
+ return TRUE;
+ exit();
 }
 else{
-echo "MDP pas bon";
+return FALSE;
 }
 
 

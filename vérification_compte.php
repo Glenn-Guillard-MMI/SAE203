@@ -41,7 +41,7 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
 
 
         // Vérification si une personne reussie a rentrer autre chose que un mail
-        if (!filter_var($_SESSION['$email'], FILTER_VALIDATE_EMAIL))
+        if (!filter_var($_SESSION['email'], FILTER_VALIDATE_EMAIL))
         {
                 $_SESSION["message_inc"] = "Votre email est incorrect";
 
@@ -128,15 +128,15 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         else
 
     {
+        require_once "connection_sql.php";
         $first_name = ucfirst(strtolower($_POST['first_name'])) ;
         $last_name = ucfirst(strtolower($_POST['last_name'])) ;
         $birth = $_POST['birth'] ;
         $email = $_POST['email'] ;
         $password = hash("sha256",$_POST['password'], false) ;
-        $query = "INSERT INTO users (first_name, last_name, birth, email, password) VALUES ('$first_name', '$last_name', '$birth', '$email', '$password') ;" ;    
+        $query = "INSERT INTO users (first_name, last_name, birth, email, password) VALUES ('$first_name', '$last_name', '$birth', '$email', '$password')" ;    
         mysqli_query($link, $query) ;
         mysqli_close($link);
-        session_start();
         $_SESSION["enregistrer"] = "Votre compte a bien était enregister";
         header("Location: index.php");
 
