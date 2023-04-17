@@ -108,7 +108,7 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
          // vérification du mot de passe
         if (!mdp($_POST['password']))
         {
-            $_SESSION["mdp_error"] = "Mot de passe invalide";
+            $_SESSION["mdp_error"] = "Votre passe doit contenir au minimun 1 caractères spéciaux, 1 chiffre et doit faire minimum 6 caractéres";
         }
         else{
 

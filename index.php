@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
 </head>
+
 <body>
 
     <header>
@@ -21,7 +23,9 @@
         <form id="formulaire" action='login.php' method='post'>
             <div id="div_form">
                 <p for="id" class="text_form">Identifiant : </p>
-                <input class="champ" type="text" name="email"  <?php if(isset($_POST['email'])) { echo "value = '" .$_POST['email']."'"; } ?>>
+                <input class="champ" type="text" name="email" <?php if (isset($_POST['email'])) {
+                    echo "value = '" . $_POST['email'] . "'";
+                } ?>>
                 <br>
                 <p for="password" class="text_form">Mot de passe : </p>
                 <input class="champ" type="password" name="password">
@@ -38,4 +42,5 @@
     </div>
     </div>
 </body>
+
 </html>
