@@ -16,15 +16,34 @@
             <img id="logo_univ" src="ressource/logo_univ.png" alt="logo_université">
         </div>
     </header>
+
+
+
     <div id="titre_connexion">
         <h1>Connexion</h1>
+
+        <?php
+        session_start();
+        if (isset($_SESSION["enr_err"])) {
+            echo "<p class='enregistre'>" . $_SESSION["enr_err"] . "</p>";
+
+        }
+        session_destroy();
+        ?>
     </div>
+
     <div class="container">
         <form id="formulaire" action='login.php' method='post'>
             <div id="div_form">
-                <p for="id" class="text_form">Identifiant : </p>
-                <input class="champ" type="text" name="email" <?php if (isset($_POST['email'])) {
-                    echo "value = '" . $_POST['email'] . "'";
+                <p for="id" class="text_form">E-mail : </p>
+
+
+
+
+                <input class="champ" type="text" name="email" <?php
+                session_start();
+                if (isset($_SESSION['email'])) {
+                    echo "value = '" . $_SESSION['email'] . "'";
                 } ?>>
                 <br>
                 <p for="password" class="text_form">Mot de passe : </p>
@@ -41,6 +60,9 @@
         </form>
     </div>
     </div>
+
+
+
 </body>
 
 </html>

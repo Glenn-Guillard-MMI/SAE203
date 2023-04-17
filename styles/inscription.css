@@ -25,11 +25,6 @@ body {
   margin-top: 10px;
   width: 200px;
   justify-content: center;
-  text-align: justify;
-}
-
-p.erreur {
-  text-align: center;
 }
 
 #div_form {
