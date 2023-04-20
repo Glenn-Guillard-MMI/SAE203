@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/new_materiel.css">
     <link rel="icon" href="ressource/fried_corp.png" type="image/icon type">
     <title>Ajouter du matériel</title>
 </head>
+
 <body>
-<header>
-        <div id="nav">
-            <img id="logo_univ" src="ressource/logo_univ.png" alt="logo université">
+    <header>
+        <div id="container">
+            <div>
+                <img id="logo_univ" src="ressource/logo_univ.png" alt="logo université">
+            </div>
+            <div id="nav">
+                <div class="menu">
+                    <a class="bouton_menu" href="materiel.html">Matériel</a>
+                </div>
+                <div class="menu">
+                    <a class="bouton_menu" href="demande.html">Mes demandes</a>
+                </div>
+                <?php
+                session_start();
+
+                $link = mysqli_connect("localhost", "root", "", "bdd_sae");
+
+                $email = $_SESSION['email'];
+
+                $query = "SELECT admin FROM users WHERE email='$email' ;";
+                $result = mysqli_query($link, $query);
+                while ($row = mysqli_fetch_assoc($result)) {
+                    if ($row['admin'] == '1') {
+                        echo "<div class='menu'>";
+                        echo "<a class='bouton_menu' href='validation.html'>Validation</a>";
+                        echo "</div>";
+                        echo "<div class='menu'>";
+                        echo "<a class='bouton_menu' href='new_materiel.php'>Ajout de Matériel</a>";
+                        echo "</div>";
+                    }
+                }
+                ?>
+            </div>
+            <div id="menu_logo">
+                <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte">
+            </div>
         </div>
     </header>
     <div id="bandeau_img">
@@ -52,31 +87,28 @@
     </form>
     </div>
     <?php
-        session_start();
 
-        $link = mysqli_connect("localhost","root","","bdd_sae") ;
-    
-        $email = $_SESSION['email'];
-        
-        $query = "SELECT admin FROM users WHERE email='$email' ;" ;
-        $result = mysqli_query($link, $query) ;
-        while ($row = mysqli_fetch_assoc($result)) {
-            if ($row['admin'] == '1') {
-                if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description'])) {
-                    $nom = $_POST['nom'] ;
-                    $reference = $_POST['reference'] ;
-                    $type = $_POST['type'] ;
-                    $description = $_POST['description'] ;
-                    $query = "INSERT INTO materiel (reference, nom, type, description) VALUES ('$reference', '$nom', '$type', '$description') ;" ;    
-                    mysqli_query($link, $query) ;
-                }
+    $email = $_SESSION['email'];
+
+    $query = "SELECT admin FROM users WHERE email='$email' ;";
+    $result = mysqli_query($link, $query);
+    while ($row = mysqli_fetch_assoc($result)) {
+        if ($row['admin'] == '1') {
+            if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description'])) {
+                $nom = $_POST['nom'];
+                $reference = $_POST['reference'];
+                $type = $_POST['type'];
+                $description = $_POST['description'];
+                $query = "INSERT INTO materiel (reference, nom, type, description) VALUES ('$reference', '$nom', '$type', '$description') ;";
+                mysqli_query($link, $query);
             }
-            else{
-                header("Location: accueil.php");
-            }
+        } else {
+            header("Location: accueil.php");
         }
+    }
 
-        mysqli_close($link);
+    mysqli_close($link);
     ?>
 </body>
+
 </html>

@@ -112,6 +112,7 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         mysqli_close($link);
         $_SESSION["enr_err"] = "Votre compte a bien était enregistrer";
         header("Location: index.php");
+        session_destroy();
         exit();
 
     }

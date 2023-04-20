@@ -10,13 +10,56 @@ body {
 
 #nav {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+#container{
+    display: flex;
     justify-content: left;
+    height: 100%;
 }
 
 #logo_univ {
     width: 250px;
     height: 80px;
     margin-left: 15px;
+}
+
+.menu{
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    padding-top: 30px;
+}
+
+#menu_logo{
+    width: 20%;
+    height: auto;
+    text-align: right;
+    justify-content: right ;
+
+}
+
+.bouton_menu{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+    transition: color 400ms;
+}
+
+.bouton_menu:hover{
+    color: #6B7B8C;
+}
+
+#logo_compte{
+    width: 40%;
+    height: 75%;
+    margin-top: 6%;
+    margin-right: 7%;
+    object-fit: scale-down;
 }
 
 header {

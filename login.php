@@ -1,11 +1,13 @@
 <?php
 
-
+//Ouverture de la session et du sql
 require "connection_sql.php";
 session_start();
 $_SESSION['email'] = $_POST['email'];
 $_SESSION['pwd'] = $_POST['password'];
 
+
+// Vérifie si il y un mail et un mdp rentréenpar l'utilisateur
 if (!empty($_SESSION['email']) and !empty($_SESSION['pwd'])) {
 
     $email = $_SESSION['email'];
@@ -23,7 +25,12 @@ if (!empty($_SESSION['email']) and !empty($_SESSION['pwd'])) {
         header("Location: index.php");
         exit();
     }
-} else {
+
+
+}
+
+//Renvoie sur la page index si il y a pas de mail et/ou pas de mot de passe
+else {
     mysqli_close($link);
     header("Location: index.php");
     exit();

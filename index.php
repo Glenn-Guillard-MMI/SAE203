@@ -28,7 +28,7 @@
             echo "<p class='enregistre'>" . $_SESSION["enr_err"] . "</p>";
 
         }
-        session_destroy();
+
         ?>
     </div>
 
@@ -41,7 +41,7 @@
 
 
                 <input class="champ" type="text" name="email" <?php
-                session_start();
+
                 if (isset($_SESSION['email'])) {
                     echo "value = '" . $_SESSION['email'] . "'";
                 } ?>>
@@ -60,7 +60,6 @@
         </form>
     </div>
     </div>
-
 
 
 </body>
