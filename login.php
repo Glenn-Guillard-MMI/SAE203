@@ -15,12 +15,18 @@ if (!empty($_SESSION['email']) and !empty($_SESSION['pwd'])) {
     $query = "SELECT first_name, last_name FROM users WHERE email='$email' AND password ='$password';";
     $rsl = mysqli_query($link, $query);
 
+
+    // Vérifie que le mail et le mdp existe dans la base de donnée
     if (mysqli_num_rows($rsl) == 1) {
         mysqli_close($link);
         header("Location: accueil.php");
+        $_SESSION["Token"] = "Oui";
         exit();
 
-    } else {
+    }
+
+    //Revoit si cela est faux
+    else {
         mysqli_close($link);
         header("Location: index.php");
         exit();

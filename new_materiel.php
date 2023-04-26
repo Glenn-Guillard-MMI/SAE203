@@ -11,46 +11,65 @@
 <body>
     <header>
         <div id="container">
+
+            <!-- logo header -->
             <div>
                 <img id="logo_univ" src="ressource/logo_univ.png" alt="logo université">
             </div>
+
+            <!-- Menue -->
             <div id="nav">
+
                 <div class="menu">
                     <a class="bouton_menu" href="materiel.html">Matériel</a>
                 </div>
+
+
                 <div class="menu">
                     <a class="bouton_menu" href="demande.html">Mes demandes</a>
                 </div>
+
+
                 <?php
+                //Menue admin
                 session_start();
-
                 $link = mysqli_connect("localhost", "root", "", "bdd_sae");
-
                 $email = $_SESSION['email'];
-
                 $query = "SELECT admin FROM users WHERE email='$email' ;";
                 $result = mysqli_query($link, $query);
-                while ($row = mysqli_fetch_assoc($result)) {
-                    if ($row['admin'] == '1') {
-                        echo "<div class='menu'>";
-                        echo "<a class='bouton_menu' href='validation.html'>Validation</a>";
-                        echo "</div>";
-                        echo "<div class='menu'>";
-                        echo "<a class='bouton_menu' href='new_materiel.php'>Ajout de Matériel</a>";
-                        echo "</div>";
-                    }
+                $row = mysqli_fetch_assoc($result);
+                if ($row['admin'] == '1') {
+                    echo "<div class='menu'>";
+                    echo "<a class='bouton_menu' href='validation.html'>Validation</a>";
+                    echo "</div>";
+                    echo "<div class='menu'>";
+                    echo "<a class='bouton_menu' href='new_materiel.php'>Ajout de Matériel</a>";
+                    echo "</div>";
+                } else {
+                    header("Location: index.php");
+                    exit();
                 }
+
+                mysqli_close($link);
                 ?>
             </div>
+
             <div id="menu_logo">
                 <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte">
             </div>
         </div>
+
+
     </header>
+
+    <!-- Image header -->
     <div id="bandeau_img">
         <img id="interieur" src="ressource/etudiant.jpg" alt="intérieur">
     </div>
-    <form action='new_materiel.php' method='post'>
+
+
+
+    <form action='crea_mat_admin.php' method='post'>
         <div id="div_formulaire">
             <div id="titre">
                 <p>Information sur le matériel : </p>
@@ -58,24 +77,59 @@
             <div id="container">
                 <div id="div_info">
                     <p>Nom : </p>
-                    <input class="champs_info" type="text" name="nom" required="required">
+                    <input class="champs_info" type="text" name="nom" <?php
+                    if (isset($_SESSION['nom_mat'])) {
+                        echo "value = '" . htmlentities($_SESSION['nom_mat']) . "'";
+                    }
+                    ?>>
                     <br>
+                    <?php if (isset($_SESSION["msg_nom_mat"])) {
+
+                        echo $_SESSION["msg_nom_mat"];
+
+                    } ?>
                     <br>
+
+
+
                     <p>Type : </p>
-                    <select class="champs_info" name="type" required="required">
-                        <option value="">-- Type de matériel --</option>
-                        <option value="camera">Caméra</option>
-                        <option value="micro">micro</option>
-                        <option value="light">light</option>
+                    <select class="champs_info" name="type">
+                        <?php
+                        $liste = ["Caméra", "Micro", "Light"];
+                        foreach ($liste as $i) {
+                            echo "<option value='" . $i . "'";
+                            if (isset($_SESSION['type_mat']) && $_SESSION['type_mat'] == $i) {
+                                echo "selected";
+                            }
+                            echo ">" . $i . "</option>";
+                        }
+                        ?>
                     </select>
+
+
+
                     <br>
+                    <?php
+                    if (isset($_SESSION["msg_type_mat"])) {
+
+                        echo $_SESSION["msg_type_mat"];
+                    }
+                    ?>
                     <br>
                     <p>Référence : </p>
-                    <input class="champs_info" type="text" name="reference" required="required">
+                    <input class="champs_info" type="text" name="reference" <?php
+                    if (isset($_SESSION['reference_mat'])) {
+                        echo "value = '" . htmlentities($_SESSION['reference_mat']) . "'";
+                    }
+                    ?>>
                 </div>
                 <div id="description">
                     <p>Description : </p>
-                    <textarea id="champs" type="text" name="description" size="10" required="required"></textarea>
+                    <textarea id="champs" type="text" name="description" size="10"><?php
+                    if (isset($_SESSION['description_mat'])) {
+                        echo htmlentities($_SESSION['description_mat']);
+                    }
+                    ?></textarea>
                 </div>
             </div>
             <br>
@@ -86,29 +140,7 @@
         </div>
     </form>
     </div>
-    <?php
 
-    $email = $_SESSION['email'];
-
-    $query = "SELECT admin FROM users WHERE email='$email' ;";
-    $result = mysqli_query($link, $query);
-    while ($row = mysqli_fetch_assoc($result)) {
-        if ($row['admin'] == '1') {
-            if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description'])) {
-                $nom = $_POST['nom'];
-                $reference = $_POST['reference'];
-                $type = $_POST['type'];
-                $description = $_POST['description'];
-                $query = "INSERT INTO materiel (reference, nom, type, description) VALUES ('$reference', '$nom', '$type', '$description') ;";
-                mysqli_query($link, $query);
-            }
-        } else {
-            header("Location: accueil.php");
-        }
-    }
-
-    mysqli_close($link);
-    ?>
 </body>
 
 </html>

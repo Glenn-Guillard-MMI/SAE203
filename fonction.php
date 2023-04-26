@@ -55,3 +55,15 @@ function mdp($mot)
 
 
 }
+
+
+function verif_list($mot, $list)
+{
+    if (in_array($mot, $list)) {
+        return true;
+        exit();
+    } else {
+        return false;
+    }
+
+}

@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+
 <head>
     <meta charset="UTF-8">
-
     <title>Materiel</title>
 </head>
 
 <body>
-    <div>
-    </div>
+
     <?php
     // Vérification si la personne est connecter
     session_start();
