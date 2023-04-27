@@ -33,7 +33,7 @@
                 <?php
                 //Menue admin
                 session_start();
-                $link = mysqli_connect("localhost", "root", "", "bdd_sae");
+                require "connection_sql.php";
                 $email = $_SESSION['email'];
                 $query = "SELECT admin FROM users WHERE email='$email' ;";
                 $result = mysqli_query($link, $query);

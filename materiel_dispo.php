@@ -17,7 +17,7 @@
     }
 
 
-    $link = mysqli_connect("localhost", "root", "", "bdd_sae");
+    require "connection_sql.php";
     $query = "SELECT * FROM materiel LIMIT 30 ;";
     $result = mysqli_query($link, $query);
     echo "<form action='materiel_dispo.php' method='post'>";
@@ -27,8 +27,7 @@
     while ($row = mysqli_fetch_assoc($result)) {
 
         $_SESSION[$nombre] = $row['reference'];
-        echo " <tr> <td>", $row['nom'], "</td><td> ", $row['type'], "</td> <td>", $row['reference'], "</td> <td>", $row['description'], "</td> <td> <button >X</button> </td> </tr> ";
-        echo $nombre;
+        echo " <tr> <td>", $row['nom'], "</td><td> ", $row['type'], "</td> <td>", $row['reference'], "</td> <td>", $row['description'], "</td> <td> <button onclick= script(", "'", $row['reference'], "'", ")>X</button> </td> </tr> ";
         $nombre++;
     }
     echo " </table>";
@@ -37,11 +36,10 @@
 
     mysqli_close($link);
     ?>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
 
-    <?php
-
-
-    ?>
+    <script src="scripts/script_mat_dispo.js"> </script>
 </body>
 
 </html>

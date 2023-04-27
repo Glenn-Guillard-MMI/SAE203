@@ -23,7 +23,7 @@
                 <?php
                 session_start();
 
-                $link = mysqli_connect("localhost", "root", "", "bdd_sae");
+                require "connection_sql.php";
 
                 $email = $_SESSION['email'];
 
@@ -43,8 +43,8 @@
                 ?>
             </div>
             <div id="menu_logo">
-                    <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte">
-                </div>
+                <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte">
+            </div>
         </div>
     </header>
     <div id="bandeau_img">
