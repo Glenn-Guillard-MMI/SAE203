@@ -72,7 +72,14 @@
     <form action='crea_mat_admin.php' method='post'>
         <div id="div_formulaire">
             <div id="titre">
-                <p>Information sur le matériel : </p>
+                <p>Information sur le matériel : <?php 
+             if (isset($_SESSION["acpt_valid"])) 
+             {
+            echo "<span id='acpt'>" . $_SESSION["acpt_valid"] . "</span>";
+            unset( $_SESSION["acpt_valid"] );
+            }
+            ?>
+            </p>
             </div>
             <div id="container">
                 <div id="div_info">
@@ -82,12 +89,14 @@
                         echo "value = '" . htmlentities($_SESSION['nom_mat']) . "'";
                     }
                     ?>>
-                    <br>
+
                     <?php if (isset($_SESSION["msg_nom_mat"])) {
 
-                        echo $_SESSION["msg_nom_mat"];
+                        echo "<p class='erreur'>" . $_SESSION["msg_nom_mat"] . "</p>";
 
                     } ?>
+                    <br>
+
                     <br>
 
 
@@ -104,17 +113,18 @@
                             echo ">" . $i . "</option>";
                         }
                         ?>
+                         
                     </select>
-
-
-
-                    <br>
                     <?php
                     if (isset($_SESSION["msg_type_mat"])) {
 
-                        echo $_SESSION["msg_type_mat"];
+                        echo "<p class='erreur'>" . $_SESSION["msg_type_mat"] . "</p>";
                     }
                     ?>
+
+
+                    <br>
+                   
                     <br>
                     <p>Référence : </p>
                     <input class="champs_info" type="text" name="reference" <?php
@@ -122,7 +132,14 @@
                         echo "value = '" . htmlentities($_SESSION['reference_mat']) . "'";
                     }
                     ?>>
+                <?php
+                if (isset($_SESSION["msg_reference_mat"])) {
+
+                    echo "<p class='erreur'>" . $_SESSION["msg_reference_mat"] . "</p>";
+                }
+                ?>
                 </div>
+
                 <div id="description">
                     <p>Description : </p>
                     <textarea id="champs" type="text" name="description" size="10"><?php

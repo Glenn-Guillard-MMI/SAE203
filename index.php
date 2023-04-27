@@ -46,7 +46,7 @@
                 <p for="id" class="text_form">E-mail : </p>
                 <input class="champ" type="text" name="email" <?php
                 if (isset($_SESSION['email'])) {
-                    echo htmlentities("value = '" . $_SESSION['email'] . "'");
+                    echo "value = '" . htmlentities($_SESSION['email']) . "'";
                 } ?>>
 
 

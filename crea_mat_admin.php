@@ -6,15 +6,22 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
     $_SESSION['reference_mat'] = $_POST['reference'];
     $_SESSION['type_mat'] = $_POST['type'];
     $_SESSION['description_mat'] = $_POST['description'];
-    $email = $_SESSION['email'];
+    $mat = $_SESSION['reference_mat'];
 
 
 
     // Lancement de SQL
     require 'connection_sql.php';
-    $query = "SELECT admin FROM users WHERE email='$email' ;";
+    $query = "SELECT reference FROM materiel WHERE reference='$mat' ;";
     $result = mysqli_query($link, $query);
-    $row = mysqli_fetch_assoc($result);
+    $row = mysqli_num_rows($result);
+    if ($row == 1) {
+        $_SESSION["msg_reference_mat"] = "La référence du matériel existe déjà";
+    } else {
+        $_SESSION["msg_reference_mat"] = null;
+    }
+
+
 
 
     //Récupe de toute les fonction
@@ -27,6 +34,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
         $_SESSION["msg_nom_mat"] = null;
     }
 
+    //Vérif type du matériel
     if (!verif_list($_SESSION['type_mat'], ["Caméra", "Micro", "Light"])) {
         $_SESSION["msg_type_mat"] = "Le type du matériel n'est pas valide";
     } else {
@@ -49,6 +57,12 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
         $query = "INSERT INTO materiel (reference, nom, type, description) VALUES ('$reference', '$nom', '$type', '$description') ;";
         mysqli_query($link, $query);
         header("Location: new_materiel.php");
+        $_SESSION["acpt_valid"] = "Votre matériel a bien était mise en ligne";
+        unset($_SESSION['nom_mat']);
+        unset($_SESSION['type_mat']);
+        unset($_SESSION['description_mat']);
+        unset($_SESSION['reference_mat']);
+        mysqli_close($link);
         exit();
 
     }
