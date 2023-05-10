@@ -27,7 +27,11 @@
     while ($row = mysqli_fetch_assoc($result)) {
 
         $_SESSION[$nombre] = $row['reference'];
-        echo " <tr> <td>", $row['nom'], "</td><td> ", $row['type'], "</td> <td>", $row['reference'], "</td> <td>", $row['description'], "</td> <td> <button onclick= script(", "'", $row['reference'], "'", ")>X</button> </td> </tr> ";
+        echo " <tr> <td>", $row['nom'], "</td><td> ", $row['type'], "</td> <td>", $row['reference'], "</td> <td>", $row['description'], "</td> <td> <button onclick= script("; 
+        echo "'"; 
+        echo $row['reference'] ;
+        echo "'";  
+        echo ")>X</button> </td> </tr> ";
         $nombre++;
     }
     echo " </table>";
@@ -36,10 +40,11 @@
 
     mysqli_close($link);
     ?>
-    <script src="https://code.jquery.com/jquery-3.6.4.js"
-        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+   
 
-    <script src="scripts/script_mat_dispo.js"> </script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+ <script src="scripts/dispo.js"> </script>
+    
 </body>
 
 </html>

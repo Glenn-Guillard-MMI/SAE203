@@ -14,7 +14,7 @@
 
             <!-- logo header -->
             <div>
-                <img id="logo_univ" src="ressource/logo_univ.png" alt="logo université">
+                <a href="acceuil.php"><img id="logo_univ" src="ressource/logo_univ.png" alt="logo université"></a>
             </div>
 
             <!-- Menue -->
@@ -157,7 +157,9 @@
         </div>
     </form>
     </div>
-
+    <?php 
+    require "footer.html"
+    ?>
 </body>
 
 </html>

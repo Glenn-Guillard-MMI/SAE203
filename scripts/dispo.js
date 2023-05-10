@@ -1,5 +1,4 @@
 function script(test) {
-  alert("jkk");
   var varible_a_detruire = test;
   jQuery.ajax({
     url: "action_materiel_dispo.php",
@@ -9,3 +8,6 @@ function script(test) {
     },
   });
 }
+
+
+
