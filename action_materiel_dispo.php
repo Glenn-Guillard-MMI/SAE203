@@ -1,7 +1,13 @@
 <?php
 $sup = $_POST["var_sup"];
+session_start();
+
 require "connection_sql.php";
-$query = "DELETE FROM materiel WHERE reference='$sup'";
-mysqli_query($link, $query);
+$query = "SELECT * FROM materiel WHERE reference='$sup'";
+$all = mysqli_query($link, $query);
+$_SESSION["test"] = $all->fetch_all(MYSQLI_ASSOC);
+
+
+
 mysqli_close($link);
 exit;

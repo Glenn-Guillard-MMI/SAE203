@@ -30,7 +30,7 @@
 
         }
         if (isset($_SESSION["Token"]) && $_SESSION["Token"] === "Oui") {
-            header("LOCATION: accueil.php");
+            header("LOCATION: acceuil.php");
         }
         ?>
     </div>

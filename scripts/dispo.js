@@ -6,8 +6,8 @@ function script(test) {
     data: {
       var_sup: varible_a_detruire,
     },
+    success: function (response) {
+      window.location.href = "teste.php";
+    },
   });
 }
-
-
-

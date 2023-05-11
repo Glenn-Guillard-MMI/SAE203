@@ -19,7 +19,7 @@ if (!empty($_SESSION['email']) and !empty($_SESSION['pwd'])) {
     // Vérifie que le mail et le mdp existe dans la base de donnée
     if (mysqli_num_rows($rsl) == 1) {
         mysqli_close($link);
-        header("Location: accueil.php");
+        header("Location: acceuil.php");
         $_SESSION["Token"] = "Oui";
         exit();
 
