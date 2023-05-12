@@ -9,63 +9,10 @@
 </head>
 
 <body>
-    <header>
-        <div id="container">
 
-            <!-- logo header -->
-            <div>
-                <a href="acceuil.php"><img id="logo_univ" src="ressource/logo_univ.png" alt="logo université"></a>
-            </div>
-
-            <!-- Menue -->
-            <div id="nav">
-
-                <div class="menu">
-                    <a class="bouton_menu" href="materiel.html">Matériel</a>
-                </div>
-
-
-                <div class="menu">
-                    <a class="bouton_menu" href="demande.html">Mes demandes</a>
-                </div>
-
-
-                <?php
-                //Menue admin
-                session_start();
-                require "connection_sql.php";
-                $email = $_SESSION['email'];
-                $query = "SELECT admin FROM users WHERE email='$email' ;";
-                $result = mysqli_query($link, $query);
-                $row = mysqli_fetch_assoc($result);
-                if ($row['admin'] == '1') {
-                    echo "<div class='menu'>";
-                    echo "<a class='bouton_menu' href='validation.html'>Validation</a>";
-                    echo "</div>";
-                    echo "<div class='menu'>";
-                    echo "<a class='bouton_menu' href='new_materiel.php'>Ajout de Matériel</a>";
-                    echo "</div>";
-                } else {
-                    header("Location: index.php");
-                    exit();
-                }
-
-                mysqli_close($link);
-                ?>
-            </div>
-
-            <div id="menu_logo">
-                <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte">
-            </div>
-        </div>
-
-
-    </header>
-
-    <!-- Image header -->
-    <div id="bandeau_img">
-        <img id="interieur" src="ressource/etudiant.jpg" alt="intérieur">
-    </div>
+<?php
+    require "header.php";
+    ?>
 
 
 

@@ -7,7 +7,7 @@ function script(test) {
       var_sup: varible_a_detruire,
     },
     success: function (response) {
-      window.location.href = "teste.php";
+      window.location.href = "materiel.php";
     },
   });
 }
