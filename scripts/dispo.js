@@ -7,7 +7,7 @@ function script(test) {
       var_sup: varible_a_detruire,
     },
     success: function (response) {
-      window.location.href = "materiel.php";
+      window.location.href = "reservation.php";
     },
   });
 }

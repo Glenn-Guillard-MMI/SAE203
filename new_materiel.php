@@ -51,7 +51,7 @@
                     <p>Type : </p>
                     <select class="champs_info" name="type">
                         <?php
-                        $liste = ["Caméra", "Micro", "Light"];
+                        $liste = ["Caméra", "Micro", "Light","perche"];
                         foreach ($liste as $i) {
                             echo "<option value='" . $i . "'";
                             if (isset($_SESSION['type_mat']) && $_SESSION['type_mat'] == $i) {

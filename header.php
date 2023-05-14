@@ -13,7 +13,7 @@
         <a href="acceuil.php"><img id="logo_univ" src="ressource/logo_univ.png" alt="logo université" /></a>
       </div>
       <div class="menu" id="menu_materiel">
-        <a class="bouton_menu" href="materiel.html">Matériel</a>
+        <a class="bouton_menu" href="materiel_dispo.php">Matériel</a>
       </div>
       <div class="menu">
         <a class="bouton_menu" href="demande.html">Mes demandes</a>

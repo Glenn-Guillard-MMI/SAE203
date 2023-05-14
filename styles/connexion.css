@@ -19,8 +19,12 @@
   border-radius: 30px;
 }
 
-.enregistre {
+#enregistre {
   color: rgb(69, 243, 0);
+}
+
+#problem {
+  color: red;
 }
 
 #boutton_connecter {

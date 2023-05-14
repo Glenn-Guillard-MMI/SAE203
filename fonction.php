@@ -72,9 +72,9 @@ function verif_list($mot, $list)
 
 function verif_date_mat($df, $ds)
 {
-    if ($df < $ds) {
+    if ($df > $ds) {
         return FALSE;
-    } elseif (!strtotime($_POST['birth']) == TRUE) {
+    } elseif (!strtotime($df) == TRUE && !strtotime($ds) == TRUE) {
         return FALSE;
 
     } else {

@@ -35,7 +35,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
     }
 
     //Vérif type du matériel
-    if (!verif_list($_SESSION['type_mat'], ["Caméra", "Micro", "Light"])) {
+    if (!verif_list($_SESSION['type_mat'], ["Caméra", "Micro", "Light", "perche"])) {
         $_SESSION["msg_type_mat"] = "Le type du matériel n'est pas valide";
     } else {
         $_SESSION["msg_type_mat"] = null;

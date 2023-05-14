@@ -25,9 +25,13 @@
         <!-- Message erreur -->
         <?php
         session_start();
-        if (isset($_SESSION["enr_err"])) {
-            echo "<p class='enregistre'>" . $_SESSION["enr_err"] . "</p>";
-
+        if (isset($_SESSION["erg_cmp_valide"])) {
+            echo "<p id='enregistre'>" . $_SESSION["erg_cmp_valide"] . "</p>";
+            unset($_SESSION["erg_cmp_valide"]);
+        }
+        if (isset($_SESSION["pb_co"])) {
+            echo "<p id='problem'>" . $_SESSION["pb_co"] . "</p>";
+            unset($_SESSION["pb_co"]);
         }
         if (isset($_SESSION["Token"]) && $_SESSION["Token"] === "Oui") {
             header("LOCATION: acceuil.php");
