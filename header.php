@@ -16,7 +16,7 @@
         <a class="bouton_menu" href="materiel_dispo.php">Matériel</a>
       </div>
       <div class="menu">
-        <a class="bouton_menu" href="demande.html">Mes demandes</a>
+        <a class="bouton_menu" href="demande.php">Mes demandes</a>
       </div>
       <?php
       session_start();
@@ -41,6 +41,9 @@
       ?>
       <div id="menu_logo">
         <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte" />
+        <div id="deconnexion">
+          <span>Déconnexion</span>
+        </div>
       </div>
     </div>
   </header>

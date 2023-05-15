@@ -27,11 +27,11 @@ if (!empty($_POST["date_first"]) && !empty($_POST["date_second"])) {
             mysqli_query($link, $query);
             mysqli_close($link);
             header("Location:reservation.php");
-            $_SESSION["message_good_verif_mat"] = "Votre demande a bien était enregistrer";
+            $_SESSION["message_good_verif_mat"] = "Votre demande a bien été enregistrée";
             exit();
         } else {
             header("Location:reservation.php");
-            $_SESSION["message_err_verif_mat"] = "Ce matériel à déjà était resever de ce créneaux";
+            $_SESSION["message_err_verif_mat"] = "Ce matériel a déjà été resevé à ces dates";
 
             exit();
         }
@@ -40,13 +40,13 @@ if (!empty($_POST["date_first"]) && !empty($_POST["date_second"])) {
 
     } else {
         header("Location:reservation.php");
-        $_SESSION["message_err_verif_mat"] = "Veulliez vérifier vos date";
+        $_SESSION["message_err_verif_mat"] = "Veulliez vérifier vos dates";
 
         exit();
     }
 } else {
     header("Location:reservation.php");
-    $_SESSION["message_err_verif_mat"] = "Veulliez remplir toute les information";
+    $_SESSION["message_err_verif_mat"] = "Veulliez remplir toutes les informations";
 
 }
 ?>

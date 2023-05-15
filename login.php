@@ -39,6 +39,6 @@ if (!empty($_SESSION['email']) and !empty($_SESSION['pwd'])) {
 else {
     mysqli_close($link);
     header("Location: index.php");
-    $_SESSION["pb_co"] = "votre mail ou votre mot de passe samble incorrect";
+    $_SESSION["pb_co"] = "votre mail ou votre mot de passe semble incorrect";
     exit();
 }

@@ -4,55 +4,45 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/materiel_dispo.css" />
     <title>Materiel</title>
 </head>
 
 <body>
 
     <?php
-    require "header.php";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
     // Vérification si la personne est connecter
+    require "header.php";
+
     if (!isset($_SESSION["email"])) {
         header("LOCATION:index.php");
     }
 
 
-
-
     require "connection_sql.php";
     $query = "SELECT * FROM materiel LIMIT 30 ;";
     $result = mysqli_query($link, $query);
-
-    echo " <table border=1>";
-    echo " <tr> <th> nom </th> <th> type </th> <th> reference </th> <th> description </th> </tr>";
     $nombre = "a";
+    echo "<div class='container_materiel'>";
     while ($row = mysqli_fetch_assoc($result)) {
-
         $_SESSION[$nombre] = $row['reference'];
-        echo " <tr> <td>", $row['nom'], "</td><td> ", $row['type'], "</td> <td>", $row['reference'], "</td> <td>", $row['description'], "</td> <td> <button onclick= script(";
-        echo "'";
-        echo $row['reference'];
-        echo "'";
-        echo ")>X</button> </td> </tr> ";
+        echo "<div class='container_info_global'>";
+        echo "<div class='div_img'>";
+        echo '<img class="img_produit" src="data:image/jpg;base64,' . base64_encode($row['image']) . '"height="150" width="150">';
+        echo "</div>";
+        echo "<div class='container_info'>";
+        echo "<div>",$row['nom'],"</div><div>",$row['reference'],"</div>";
+        echo "<div> <button onclick= script(", "'", $row['reference'], "'", ")>X</button></div></div></div>";
         $nombre++;
     }
-    echo " </table>";
-
+    echo "</div>";
 
 
     mysqli_close($link);
+    require "footer.html";
     ?>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.4.js"
-        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="scripts/dispo.js"> </script>
 
 </body>

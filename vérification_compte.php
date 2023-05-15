@@ -25,7 +25,7 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
 
     // Vérification de mail pour éviter les doublons
     if (mysqli_num_rows($exist_mail) >= 1) {
-        $_SESSION["message_mail"] = "Un Email est déjà enregister";
+        $_SESSION["message_mail"] = "Un Email est déjà enregisté";
         mysqli_close($link);
     } else {
         mysqli_close($link);

@@ -1,10 +1,11 @@
 <?php
 session_start();
-if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description'])) {
+if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description']) && !empty($_POST['image'])) {
     //Récup de toutes les données pour les mettre en session
     $_SESSION['nom_mat'] = $_POST['nom'];
     $_SESSION['reference_mat'] = $_POST['reference'];
     $_SESSION['type_mat'] = $_POST['type'];
+    $_SESSION['img_mat'] = $_POST['image'];
     $_SESSION['description_mat'] = $_POST['description'];
     $mat = $_SESSION['reference_mat'];
 
@@ -35,7 +36,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
     }
 
     //Vérif type du matériel
-    if (!verif_list($_SESSION['type_mat'], ["Caméra", "Micro", "Light", "perche"])) {
+    if (!verif_list($_SESSION['type_mat'], ["Caméra", "Micro", "Light"])) {
         $_SESSION["msg_type_mat"] = "Le type du matériel n'est pas valide";
     } else {
         $_SESSION["msg_type_mat"] = null;
@@ -54,10 +55,11 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
         $reference = $_POST['reference'];
         $type = $_POST['type'];
         $description = $_POST['description'];
-        $query = "INSERT INTO materiel (reference, nom, type, description) VALUES ('$reference', '$nom', '$type', '$description') ;";
+        $image = $_POST['image'];
+        $query = "INSERT INTO materiel (reference, nom, type, description, image) VALUES ('$reference', '$nom', '$type', '$description', '$image') ;";
         mysqli_query($link, $query);
         header("Location: new_materiel.php");
-        $_SESSION["acpt_valid"] = "Votre matériel a bien était mise en ligne";
+        $_SESSION["acpt_valid"] = "Votre matériel a bien été mis en ligne";
         unset($_SESSION['nom_mat']);
         unset($_SESSION['type_mat']);
         unset($_SESSION['description_mat']);
@@ -72,6 +74,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
     $_SESSION['reference_mat'] = $_POST['reference'];
     $_SESSION['type_mat'] = $_POST['type'];
     $_SESSION['description_mat'] = $_POST['description'];
+    $_SESSION['img_mat'] = $_POST['image'];
     header("Location: new_materiel.php");
     mysqli_close($link);
     exit();

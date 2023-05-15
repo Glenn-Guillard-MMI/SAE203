@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/new_materiel.css">
-    <link rel="icon" href="ressource/fried_corp.png" type="image/icon type">
     <title>Ajouter du matériel</title>
 </head>
 
@@ -31,17 +30,20 @@
             <div id="container">
                 <div id="div_info">
                     <p>Nom : </p>
-                    <input class="champs_info" type="text" name="nom" <?php
+                    <input class="champs_info" type="text" name="nom" 
+                    <?php 
                     if (isset($_SESSION['nom_mat'])) {
                         echo "value = '" . htmlentities($_SESSION['nom_mat']) . "'";
                     }
                     ?>>
 
-                    <?php if (isset($_SESSION["msg_nom_mat"])) {
+                    <?php 
+                    if (isset($_SESSION["msg_nom_mat"])) {
 
                         echo "<p class='erreur'>" . $_SESSION["msg_nom_mat"] . "</p>";
 
-                    } ?>
+                    } 
+                    ?>
                     <br>
 
                     <br>
@@ -51,7 +53,7 @@
                     <p>Type : </p>
                     <select class="champs_info" name="type">
                         <?php
-                        $liste = ["Caméra", "Micro", "Light","perche"];
+                        $liste = ["Caméra", "Micro", "Light"];
                         foreach ($liste as $i) {
                             echo "<option value='" . $i . "'";
                             if (isset($_SESSION['type_mat']) && $_SESSION['type_mat'] == $i) {
@@ -85,6 +87,17 @@
                     echo "<p class='erreur'>" . $_SESSION["msg_reference_mat"] . "</p>";
                 }
                 ?>
+                <br>
+
+                <br>
+                <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+                <span>Image :</span>
+                <input class="champs_info" id="input_img" type="file" name="image" name=image_mat <?php
+                    if (isset($_SESSION['img_mat'])) {
+                        echo "value = '" . htmlentities($_SESSION['img_mat']) . "'";
+                        echo $_SESSION['img_mat'];
+                    }
+                    ?>>
                 </div>
 
                 <div id="description">
