@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/materiel_dispo.css" />
-    <title>Materiel</title>
+    <title>Matériel</title>
 </head>
 
 <body>
@@ -31,8 +31,8 @@
         echo '<img class="img_produit" src="data:image/jpg;base64,' . base64_encode($row['image']) . '"height="150" width="150">';
         echo "</div>";
         echo "<div class='container_info'>";
-        echo "<div>",$row['nom'],"</div><div>",$row['reference'],"</div>";
-        echo "<div> <button onclick= script(", "'", $row['reference'], "'", ")>X</button></div></div></div>";
+        echo "<div id='nom_produit'>",$row['nom'],"</div><div id='reference'>",$row['reference'],"</div>";
+        echo "<div> <button id='button' onclick= script(", "'", $row['reference'], "'", ")>Réserver</button></div></div></div>";
         $nombre++;
     }
     echo "</div>";

@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#table1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    border-radius: 10px;
+    background-color: rgba(197, 197, 197, 0.35);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+#table2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    border-radius: 10px;
+    background-color: rgba(197, 197, 197, 0.35);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.premiere_ligne {
+    border-bottom: 1px solid black;
+    position: sticky;
+    top: 0;
+    background-color: rgba(197, 197, 197);
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+}
+
+
+td {
+    border: none;
+}
+
+th {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+#div_table_validation {
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+#div_table_validation_fini {
+    max-height: 500px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.button_v {
+    cursor: pointer;
+    border-color: green;
+    color: green;
+    border-radius: 5px;
+    width: 75px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    transition: all 0.5s;
+}
+
+.button_v:hover {
+    background-color: green;
+    border: none;
+    color: white;
+}
+
+.button_r {
+    cursor: pointer;
+    border-color: red;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: red;
+    border-radius: 5px;
+    width: 60px;
+    height: 25px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: all 0.5s;
+}
+
+.button_r:hover {
+    background-color: red;
+    border: none;
+    color: white;
+}
+
+#div_table_validation_fini {
+    margin-top: 5%;
+}
+
+.validation_a {
+    color: green;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.validation_r {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.espace {
+    height: 10px;
+}

@@ -31,7 +31,7 @@
     color: white;
     text-decoration: none;
     font-size: 25px;
-    transition: color 400ms;
+    transition: color 0.5s;
   }
   
   .bouton_menu:hover {

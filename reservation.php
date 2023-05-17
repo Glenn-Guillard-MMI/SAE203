@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/reservation.css">
-    <title>Reservation</title>
+    <title>Réservation</title>
 </head>
 
 <body>
     <?php require "header.php";
     require "connection_sql.php";
     $email = $_SESSION['email'];
+    echo "<div id='container_msg'>";
     if (isset($_SESSION["message_good_verif_mat"])) {
-        echo "<p>", $_SESSION["message_good_verif_mat"], "</p>";
+        echo "<p class='message_reserv'>", $_SESSION["message_good_verif_mat"], "</p>";
         unset($_SESSION["message_good_verif_mat"]);
     }
     if (isset($_SESSION["message_err_verif_mat"])) {
-        echo "<p>", $_SESSION["message_err_verif_mat"], "</p>";
+        echo "<p class='message_reserv'>", $_SESSION["message_err_verif_mat"], "</p>";
         unset($_SESSION["message_err_verif_mat"]);
     }
+    echo "</div>"
     ?>
 
     <div id="div_reservation_globale">
@@ -71,7 +73,9 @@
 
         </div>
     </div>
-
+    <div id="div_retour">
+        <a id="button_retour" href="materiel_dispo.php"> < Retour</a>
+    </div>
     <?php require "footer.html" ?>
 </body>
 

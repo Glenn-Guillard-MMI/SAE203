@@ -94,6 +94,7 @@ body {
   color: black;
   border-radius: 5px;
   border-color: rgba(107, 107, 107, 0.585);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: background-color;
   transition: color;
@@ -118,6 +119,7 @@ body {
   width: 175px;
   font-size: 18px;
   background-color: rgba(255, 255, 255, 0.702);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: black;
   border-radius: 5px;
   border-color: rgba(107, 107, 107, 0.585);
@@ -139,4 +141,31 @@ body {
 #div_boutton_modifier {
   margin-left: 30%;
   margin-top: 2%;
+}
+
+.message_reserv{
+  font-weight: bold;
+  text-align: center;
+  font-size: 30px;
+}
+
+#container_msg{
+  margin-top: 5%;
+}
+
+#button_retour{
+  text-decoration: none;
+  font-size: 30px;
+  color: black;
+  transition: all 1s;
+}
+
+#button_retour:hover{
+  color: #6b7b8c;
+  font-size: 35px;
+}
+
+#div_retour{
+  margin-top: 3%;
+  margin-left: 3%;
 }

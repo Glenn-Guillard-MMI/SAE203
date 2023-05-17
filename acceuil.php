@@ -28,7 +28,7 @@
         </div>
     </div>
     <div id="bouton_all_mater">
-        <a href="materiel.html" id="bouton_voir_mater">Voir tout le matériel > </a>
+        <a href="materiel_dispo.php" id="bouton_voir_mater">Voir tout le matériel > </a> <!-- changement du lien-->
     </div>
     <div id="section_other_service">
         <div>

@@ -24,6 +24,10 @@
       require "connection_sql.php";
 
       $email = $_SESSION['email'];
+      if (!isset($_SESSION["email"])) {
+        header("LOCATION:index.php");
+      }
+
 
       $query = "SELECT admin FROM users WHERE email='$email' ;";
       $result = mysqli_query($link, $query);

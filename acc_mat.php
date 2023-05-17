@@ -17,7 +17,7 @@ mysqli_query($link, $query);
 
 
 //update a 2 pour ceux qui on la même date 
-$sup = "UPDATE reservation SET autorisation = 2  WHERE ( ((date_debut = '$df' or (date_debut<'$ds' and date_debut>'$df')) or ( date_fin = '$ds' or (date_fin<'$ds' and date_fin>'$df'))) or (date_debut<'$df' and date_fin>'$ds')  and  autorisation = 0 AND reference='$ref')";
+$sup = "UPDATE reservation SET autorisation = 2  WHERE (( ((date_debut = '$df' or (date_debut<'$ds' and date_debut>'$df')) or ( date_fin = '$ds' or (date_fin<'$ds' and date_fin>'$df'))) or (date_debut<'$df' and date_fin>'$ds')  and  autorisation = 0) AND reference='$ref')";
 mysqli_query($link, $sup);
 
 
