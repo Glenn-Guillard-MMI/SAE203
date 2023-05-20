@@ -46,7 +46,7 @@
       <div id="menu_logo">
         <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte" />
         <div id="deconnexion">
-          <span>Déconnexion</span>
+          <span> <a href="déconnexion.php">Déconnexion</a></span>
         </div>
       </div>
     </div>

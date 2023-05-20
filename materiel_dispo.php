@@ -31,7 +31,7 @@
         echo '<img class="img_produit" src="data:image/jpg;base64,' . base64_encode($row['image']) . '"height="150" width="150">';
         echo "</div>";
         echo "<div class='container_info'>";
-        echo "<div id='nom_produit'>",$row['nom'],"</div><div id='reference'>",$row['reference'],"</div>";
+        echo "<div id='nom_produit'>", $row['nom'], "</div><div id='reference'>", $row['reference'], "</div>";
         echo "<div> <button id='button' onclick= script(", "'", $row['reference'], "'", ")>Réserver</button></div></div></div>";
         $nombre++;
     }
@@ -39,10 +39,12 @@
 
 
     mysqli_close($link);
+
     require "footer.html";
     ?>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="scripts/dispo.js"> </script>
 
 </body>

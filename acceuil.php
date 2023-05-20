@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="styles/acceuil.css">
+
     <title>Acceuil</title>
 </head>
 

@@ -21,7 +21,7 @@
         unset($_SESSION["message_err_verif_mat"]);
     }
     echo "</div>"
-    ?>
+        ?>
 
     <div id="div_reservation_globale">
         <div id="container_info_produit">
@@ -58,7 +58,7 @@
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['admin'] == '1') {
                     echo "<div id='div_boutton_modifier'>";
-                    echo "<button id='boutton_modifier' type='submit'>Modifier</button>";
+                    echo "<button id='boutton_modifier' onclick=mdf(" . "'" . $all['reference'] . "'" . ")>Modifier</button>";
 
                     echo "</div>";
                 }
@@ -74,9 +74,15 @@
         </div>
     </div>
     <div id="div_retour">
-        <a id="button_retour" href="materiel_dispo.php"> < Retour</a>
+        <a id="button_retour" href="materiel_dispo.php">
+            < Retour</a>
     </div>
-    <?php require "footer.html" ?>
+    <?php
+    require "footer.html" ?>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script src="scripts/modification.js"></script>
 </body>
 
 </html>
