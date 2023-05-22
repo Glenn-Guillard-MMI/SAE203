@@ -32,8 +32,8 @@ body {
 }
 
 #img_reservation {
-  width: 100%;
-  height: auto;
+  width: 350px;
+  height: 350px;
   object-fit: contain;
 }
 
@@ -143,29 +143,29 @@ body {
   margin-top: 2%;
 }
 
-.message_reserv{
+.message_reserv {
   font-weight: bold;
   text-align: center;
   font-size: 30px;
 }
 
-#container_msg{
+#container_msg {
   margin-top: 5%;
 }
 
-#button_retour{
+#button_retour {
   text-decoration: none;
   font-size: 30px;
   color: black;
   transition: all 1s;
 }
 
-#button_retour:hover{
+#button_retour:hover {
   color: #6b7b8c;
   font-size: 35px;
 }
 
-#div_retour{
+#div_retour {
   margin-top: 3%;
   margin-left: 3%;
 }

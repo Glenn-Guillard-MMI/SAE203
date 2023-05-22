@@ -41,8 +41,7 @@ if (!empty($_POST['nom']) && !empty($_POST['type']) && !empty($_POST['descriptio
         require "connection_sql.php";
         $nom = $_POST['nom'];
         $type = $_POST['type'];
-        $description = $_POST['description'];
-        $image = $_POST['image'];
+        $description = htmlspecialchars($_POST['description']);
         $reference = $_SESSION['ref_mdf'];
         $query = "UPDATE materiel SET nom = '$nom',type = '$type',description = '$description' Where reference = '$reference'";
         echo $query;

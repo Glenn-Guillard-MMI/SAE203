@@ -11,11 +11,12 @@
 
 <?php
     require "header.php";
+   
     ?>
 
 
 
-    <form action='crea_mat_admin.php' method='post'>
+    <form action='crea_mat_admin.php' method='post' enctype="multipart/form-data">
         <div id="div_formulaire">
             <div id="titre">
                 <p>Information sur le matériel : <?php 
@@ -92,12 +93,22 @@
                 <br>
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
                 <span>Image :</span>
-                <input class="champs_info" id="input_img" type="file" name="image" name=image_mat <?php
+                <input class="champs_info" id="input_img" type="file" name="image" <?php
                     if (isset($_SESSION['img_mat'])) {
                         echo "value = '" . htmlentities($_SESSION['img_mat']) . "'";
                         echo $_SESSION['img_mat'];
                     }
-                    ?>>
+                 
+                    
+                    ?>
+                    
+
+                    >
+                    <?php    
+                    if (isset($_SESSION["msg_img"])) {
+
+                        echo "<p class='erreur'>" . htmlentities($_SESSION["msg_img"]) . "</p>";
+                    }?>
                 </div>
 
                 <div id="description">

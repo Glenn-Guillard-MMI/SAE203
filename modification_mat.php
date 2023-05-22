@@ -90,14 +90,7 @@
                 <br>
 
                 <br>
-                <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                <span>Image :</span>
-                <input class="champs_info" id="input_img" type="file" name="image" name=image_mat <?php
-                    if (isset($_SESSION['img_mat'])) {
-                        echo "value = '" . htmlentities($_SESSION['img_mat']) . "'";
-                        echo $_SESSION['img_mat'];
-                    }
-                    ?>>
+               
                 </div>
 
                 <div id="description">

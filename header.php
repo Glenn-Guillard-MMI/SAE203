@@ -32,7 +32,8 @@
       $query = "SELECT admin FROM users WHERE email='$email' ;";
       $result = mysqli_query($link, $query);
       while ($row = mysqli_fetch_assoc($result)) {
-        if ($row['admin'] == '1') {
+        $admin = $row['admin'];
+        if ($admin == '1') {
           echo "<div class='menu'>";
           echo "<a class='bouton_menu' href='validation.php'>Validation</a>";
           echo "</div>";
@@ -44,10 +45,24 @@
       mysqli_close($link);
       ?>
       <div id="menu_logo">
-        <img id="logo_compte" src="ressource/logo_compte.png" alt="logo compte" />
-        <div id="deconnexion">
-          <span> <a href="déconnexion.php">Déconnexion</a></span>
-        </div>
+        <img <?php
+              if ($admin == '1') {
+                echo "id='logo_compte_admin'";
+              } else {
+                echo "id='logo_compte_eleve'";
+              }
+              ?> src="ressource/logo_compte.png" alt="logo compte" />
+        <a id="modif_text_deco" href="déconnexion.php">
+          <div <?php
+              if ($admin == '1') {
+                echo "id='deconnexion_admin'";
+              } else {
+                echo "id='deconnexion_eleve'";
+              }
+              ?>>
+            <span id="deconnexion_bouton">Déconnexion</span>
+          </div>
+        </a>
       </div>
     </div>
   </header>
@@ -55,5 +70,3 @@
     <img id="interieur" src="ressource/etudiant.jpg" alt="intérieur" />
   </div>
 </body>
-
-</html>

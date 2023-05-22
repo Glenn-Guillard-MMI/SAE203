@@ -15,18 +15,22 @@
         <p id="nouveaute">Les nouveautés</p>
     </div>
     <div id="product_container">
-        <div class="div_img">
-            <img class="img_product" src="ressource/camera.png" alt="caméra">
-        </div>
-        <div class="div_img">
-            <img class="img_product" src="ressource/trepied.png" alt="trepied">
-        </div>
-        <div class="div_img">
-            <img class="img_product" src="ressource/light.png" alt="light">
-        </div>
-        <div class="div_img">
-            <img id="img_perche" src="ressource/perche.png" alt="perche micro">
-        </div>
+
+        <?php
+        require "connection_sql.php";
+        $query = "SELECT * FROM materiel limit 4";
+        $result = mysqli_query($link, $query);
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<div class='div_img'>";
+            echo "<img class='img_product' src='images/" . $row['reference'] . ".jpg'" . " alt='caméra'>";
+            echo "</div>";
+
+
+        }
+
+
+
+        ?>
     </div>
     <div id="bouton_all_mater">
         <a href="materiel_dispo.php" id="bouton_voir_mater">Voir tout le matériel > </a> <!-- changement du lien-->

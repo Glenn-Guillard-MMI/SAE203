@@ -28,7 +28,7 @@
         $_SESSION[$nombre] = $row['reference'];
         echo "<div class='container_info_global'>";
         echo "<div class='div_img'>";
-        echo '<img class="img_produit" src="data:image/jpg;base64,' . base64_encode($row['image']) . '"height="150" width="150">';
+        echo '<img class="img_produit" src="images/' . $row['reference'] . '.jpg"' . '>';
         echo "</div>";
         echo "<div class='container_info'>";
         echo "<div id='nom_produit'>", $row['nom'], "</div><div id='reference'>", $row['reference'], "</div>";

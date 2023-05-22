@@ -38,7 +38,8 @@
                     <input class="champ" type="text" name="first_name" required="required" <?php
                     session_start();
                     if (isset($_SESSION['f_name'])) {
-                        echo htmlentities("value = " . $_SESSION['f_name']);
+                        echo 'value = "' . htmlentities($_SESSION['f_name']) . '"';
+
                     }
                     ?>>
                     <br>
@@ -55,7 +56,7 @@
                     <p for="prenom" class="text_form">Prénom : </p>
                     <input class="champ" type="text" name="last_name" required="required" <?php
                     if (isset($_SESSION['l_name'])) {
-                        echo htmlentities("value = " . $_SESSION['l_name']);
+                        echo 'value = "' . htmlentities($_SESSION['l_name']) . '"';
                     }
                     ?>>
                     <br>
@@ -90,7 +91,7 @@
                     <p for="mail" class="text_form">E-mail : </p>
                     <input class="champ" type="email" name="email" required="required" <?php
                     if (isset($_SESSION['email'])) {
-                        echo htmlentities("value = " . $_SESSION['email']);
+                        echo 'value = "' . htmlentities($_SESSION['email']) . '"';
                     }
                     ?>>
                     <br>

@@ -31,11 +31,12 @@
     color: white;
     text-decoration: none;
     font-size: 25px;
-    transition: color 0.5s;
+    transition: all 0.5s;
   }
   
   .bouton_menu:hover {
     color: #6b7b8c;
+    font-size: 28px;
   }
   
   header {
@@ -54,16 +55,52 @@
     object-fit: cover;
   }
   
-  #deconnexion{
+  #deconnexion_admin{
     font-size: 20px;
     margin-top: 15%;
     background-color: white;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    width: 90%;
+    margin-left: 5%;
+    transition: all 1s;
+  }
+
+  #deconnexion_admin:hover{
+    background-color: #ff0000;
+    box-shadow: 0 0 5px #a80000, 0 0 10px #a80000, 0 0 10px #a80000, 0 0 10px #a80000;
+  }
+
+  #deconnexion_eleve{
+    font-size: 20px;
+    margin-top: 10%;
+    background-color: white;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    width: 70%;
+    margin-left: 15%;
+    transition: all 1s;
+  }
+
+  #deconnexion_eleve:hover{
+    background-color: #ff0000;
+    box-shadow: 0 0 5px #a80000, 0 0 10px #a80000, 0 0 10px #a80000, 0 0 10px #a80000;
+  }
+
+  #modif_text_deco{
+    text-decoration: none;
   }
   
   #menu_logo {
     width: 20%;
     text-align: center;
-    transition: height 2s;
+    overflow: hidden;
   }
   
   #menu_logo:hover{
@@ -72,10 +109,22 @@
     cursor: pointer;
   }
 
-  #logo_compte {
-    width: 25%;
+  #logo_compte_admin {
+    width: 30%;
     height: auto;
     margin-top: 7%;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  #logo_compte_eleve {
+    width: 23%;
+    height: auto;
+    margin-top: 7%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #deconnexion_bouton{
+    color: black;
   }

@@ -1,11 +1,11 @@
 <?php
 session_start();
-if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description']) && !empty($_POST['image'])) {
+var_dump($_POST);
+if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type']) && !empty($_POST['description']) && !empty($_FILES['image'])) {
     //Récup de toutes les données pour les mettre en session
     $_SESSION['nom_mat'] = $_POST['nom'];
     $_SESSION['reference_mat'] = $_POST['reference'];
     $_SESSION['type_mat'] = $_POST['type'];
-    $_SESSION['img_mat'] = $_POST['image'];
     $_SESSION['description_mat'] = $_POST['description'];
     $mat = $_SESSION['reference_mat'];
 
@@ -42,29 +42,47 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
         $_SESSION["msg_type_mat"] = null;
     }
 
+    $fimg = $_FILES['image']['name'];
+    $extension = pathinfo($fimg, PATHINFO_EXTENSION);
+
+    if ($extension != "jpg" && $extension != "jpeg" && $extension != "png") {
+        $_SESSION["msg_img"] = "L'extension n'est pas correcte";
+    } else {
+        $_SESSION["msg_img"] = null;
+    }
 
 
 
-    if (isset($_SESSION["msg_nom_mat"]) || isset($_SESSION["msg_reference_mat"]) || isset($_SESSION["msg_type_mat"])) {
+    if (isset($_SESSION["msg_nom_mat"]) || isset($_SESSION["msg_reference_mat"]) || isset($_SESSION["msg_type_mat"]) || isset($_SESSION["msg_img"])) {
 
         header("Location: new_materiel.php");
+        var_dump("ON PASSE ICI DANS LE IF OMGOMGOMGOMG");
         mysqli_close($link);
         exit();
     } else {
         $nom = $_POST['nom'];
         $reference = $_POST['reference'];
         $type = $_POST['type'];
-        $description = $_POST['description'];
-        $image = $_POST['image'];
-        $query = "INSERT INTO materiel (reference, nom, type, description, image) VALUES ('$reference', '$nom', '$type', '$description', '$image') ;";
+        $description = htmlspecialchars($_POST['description']);
+        var_dump("ON PASSE ICI");
+        var_dump($_FILES);
+        move_uploaded_file($_FILES['image']['tmp_name'], "images/" . $_FILES['image']['name'] = $reference . '.jpg');
+
+
+        //move_uploaded_file($oldpath, $newpath);
+
+        $query = "INSERT INTO materiel (reference, nom, type, description) VALUES ('$reference', '$nom', '$type', '$description') ;";
         mysqli_query($link, $query);
-        header("Location: new_materiel.php");
+
+
+
         $_SESSION["acpt_valid"] = "Votre matériel a bien été mis en ligne";
         unset($_SESSION['nom_mat']);
         unset($_SESSION['type_mat']);
         unset($_SESSION['description_mat']);
         unset($_SESSION['reference_mat']);
         mysqli_close($link);
+        header("Location: new_materiel.php");
         exit();
 
     }
@@ -74,9 +92,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
     $_SESSION['reference_mat'] = $_POST['reference'];
     $_SESSION['type_mat'] = $_POST['type'];
     $_SESSION['description_mat'] = $_POST['description'];
-    $_SESSION['img_mat'] = $_POST['image'];
     header("Location: new_materiel.php");
-    mysqli_close($link);
     exit();
 }
 

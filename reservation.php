@@ -20,22 +20,25 @@
         echo "<p class='message_reserv'>", $_SESSION["message_err_verif_mat"], "</p>";
         unset($_SESSION["message_err_verif_mat"]);
     }
-    echo "</div>"
+    echo "</div>";
+    $all = $_SESSION['test'];
+    $all = array_shift($all);
+    $ref = $all['reference']
         ?>
 
     <div id="div_reservation_globale">
         <div id="container_info_produit">
             <div id="div_img_reservation">
-                <?php ?>
-                <img id="img_reservation" src="ressource/camera.png" alt="camera"><!-- faire attention a l'image-->
+
+                <img id="img_reservation" <?php echo "src='images/" . $ref . ".jpg'" ?>
+                    alt="camera"><!-- faire attention a l'image-->
             </div>
             <div id="div_info_produit">
                 <?php
 
 
 
-                $all = $_SESSION['test'];
-                $all = array_shift($all);
+
                 echo "<p id='nom_produit'>" . $all['nom'] . "</p>";
                 echo "<p class='ligne_info'><span id='reference'>Référence : </span>" . $all['reference'] . "</p>";
                 echo "<p class='ligne_info'><span id='type'>Type : </span>" . $all["type"] . "</p>";
