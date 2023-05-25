@@ -49,7 +49,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
         $_SESSION["msg_img"] = "L'extension n'est pas correcte";
     } else {
         $_SESSION["msg_img"] = null;
-    }
+    }   
 
 
 
