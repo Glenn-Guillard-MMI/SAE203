@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="styles/acceuil.css">
 
-    <title>Acceuil</title>
+    <title>Accueil</title>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 
         <?php
         require "connection_sql.php";
-        $query = "SELECT * FROM materiel limit 4";
+        $query = "SELECT * FROM materiel limit 3";
         $result = mysqli_query($link, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<div class='div_img'>";

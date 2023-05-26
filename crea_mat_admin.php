@@ -36,7 +36,20 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
     }
 
     //Vérif type du matériel
-    if (!verif_list($_SESSION['type_mat'], ["Caméra", "Micro", "Light"])) {
+    if (
+        !verif_list(
+            $_SESSION['type_mat'],
+            [
+                "Caméra",
+                "Micro",
+                "Light",
+                "PC",
+                "Casque",
+                "Trépied",
+                "projecteur"
+            ]
+        )
+    ) {
         $_SESSION["msg_type_mat"] = "Le type du matériel n'est pas valide";
     } else {
         $_SESSION["msg_type_mat"] = null;
@@ -49,7 +62,7 @@ if (!empty($_POST['nom']) && !empty($_POST['reference']) && !empty($_POST['type'
         $_SESSION["msg_img"] = "L'extension n'est pas correcte";
     } else {
         $_SESSION["msg_img"] = null;
-    }   
+    }
 
 
 
