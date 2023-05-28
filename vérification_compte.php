@@ -107,7 +107,8 @@ if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST
         $email = $_POST['email'];
         $password = hash("sha256", $_POST['password'], false);
         require "connection_sql.php";
-        $query = "INSERT INTO users (first_name, last_name, birth, email, password) VALUES ('$first_name', '$last_name', '$birth', '$email', '$password')";
+        // j'ai mis la case admin en tant que élève par défault
+        $query = "INSERT INTO users (first_name, last_name, birth, email, password, admin) VALUES ('$first_name', '$last_name', '$birth', '$email', '$password', '0');";
         mysqli_query($link, $query);
         mysqli_close($link);
         $_SESSION["erg_cmp_valide"] = "Votre compte a bien était enregistrer";

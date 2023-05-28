@@ -12,9 +12,7 @@
 
     <?php
     require "header.php";
-    echo "<br>";
-    echo "<br>";
-    echo "<br>";
+
 
     // Vérification si la personne est connecter
     if (!isset($_SESSION["email"])) {

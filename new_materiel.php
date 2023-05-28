@@ -45,13 +45,10 @@
 
                     } 
                     ?>
-                    <br>
-
-                    <br>
 
 
 
-                    <p>Type : </p>
+                    <p class="titre_champs">Type : </p>
                     <select class="champs_info" name="type">
                         <?php
                         $liste = ["Caméra", "Micro", "Light","PC","Casque","Trépied","projecteur"];
@@ -73,10 +70,8 @@
                     ?>
 
 
-                    <br>
-                   
-                    <br>
-                    <p>Référence : </p>
+
+                    <p class="titre_champs">Référence : </p>
                     <input class="champs_info" type="text" name="reference" <?php
                     if (isset($_SESSION['reference_mat'])) {
                         echo "value = '" . htmlentities($_SESSION['reference_mat']) . "'";
@@ -88,11 +83,9 @@
                     echo "<p class='erreur'>" . $_SESSION["msg_reference_mat"] . "</p>";
                 }
                 ?>
-                <br>
 
-                <br>
                 <input type="hidden" name="MAX_FILE_SIZE" value="1000000">
-                <span>Image :</span>
+                <span class="titre_champs">Image :</span>
                 <input class="champs_info" id="input_img" type="file" name="image" <?php
                     if (isset($_SESSION['img_mat'])) {
                         echo "value = '" . htmlentities($_SESSION['img_mat']) . "'";
@@ -120,8 +113,7 @@
                     ?></textarea>
                 </div>
             </div>
-            <br>
-            <br>
+
             <div id="div_boutton">
                 <button type="submit" id="boutton_ajout">Ajouter nouveau matériel</button>
             </div>

@@ -59,7 +59,7 @@
 
 
 
-                <br>
+                
 
 
 
@@ -67,7 +67,7 @@
                 <!-- Champ MDP -->
                 <p for="password" class="text_form">Mot de passe : </p>
                 <input class="champ" type="password" name="password">
-                <br>
+                
 
             </div>
 

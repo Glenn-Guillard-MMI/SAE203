@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles/new_materiel.css">
-    <title>Ajouter du matériel</title>
+    <title>Modification du matériel</title>
 </head>
 
 <body>
 
-<?php
+    <?php
     require "header.php";
     ?>
 
@@ -18,42 +18,46 @@
     <form action='mdf_admi.php' method='post'>
         <div id="div_formulaire">
             <div id="titre">
-                <p>Information sur le matériel : <?php 
-             if (isset($_SESSION["acpt_valid"])) 
-             {
-            echo "<span id='acpt'>" . $_SESSION["acpt_valid"] . "</span>";
-            unset( $_SESSION["acpt_valid"] );
-            }
-            ?>
-            </p>
+                <p>Information sur le matériel :
+                    <?php
+                    if (isset($_SESSION["acpt_valid"])) {
+                        echo "<span id='acpt'>" . $_SESSION["acpt_valid"] . "</span>";
+                        unset($_SESSION["acpt_valid"]);
+                    }
+                    ?>
+                </p>
             </div>
             <div id="container">
                 <div id="div_info">
-                    <p>Nom : </p>
-                    <input class="champs_info" type="text" name="nom" 
-                    <?php 
+                    <p class="titre_champs">Nom : </p>
+                    <input class="champs_info" type="text" name="nom" <?php
                     if (isset($_SESSION['nom_mdf'])) {
                         echo "value = '" . htmlentities($_SESSION['nom_mdf']) . "'";
                     }
                     ?>>
 
-                    <?php 
-                    if (isset($_SESSION["msg_nom_mat"])) {
+                    <?php
+                    if (isset($_SESSION["msg_nom_mdf"])) {
 
-                        echo "<p class='erreur'>" . $_SESSION["msg_nom_mat"] . "</p>";
-
-                    } 
+                        echo "<p class='erreur'>" . $_SESSION["msg_nom_mdf"] . "</p>";
+                    }
                     ?>
-                    <br>
-
-                    <br>
 
 
 
-                    <p>Type : </p>
+
+                    <p class="titre_champs">Type : </p>
                     <select class="champs_info" name="type">
                         <?php
-                        $liste = ["Caméra", "Micro", "Light"];
+                        $liste = [
+                            "Caméra",
+                            "Micro",
+                            "Light",
+                            "PC",
+                            "Casque",
+                            "Trépied",
+                            "projecteur"
+                        ];
                         foreach ($liste as $i) {
                             echo "<option value='" . $i . "'";
                             if (isset($_SESSION['type_mdf']) && $_SESSION['type_mdf'] == $i) {
@@ -62,35 +66,31 @@
                             echo ">" . $i . "</option>";
                         }
                         ?>
-                         
+
                     </select>
                     <?php
-                    if (isset($_SESSION["msg_type_mat"])) {
+                    if (isset($_SESSION["msg_type_mdf"])) {
 
-                        echo "<p class='erreur'>" . $_SESSION["msg_type_mat"] . "</p>";
+                        echo "<p class='erreur'>" . $_SESSION["msg_type_mdf"] . "</p>";
                     }
                     ?>
 
 
-                    <br>
-                   
-                    <br>
-                    <p>Référence : </p>
+
+                    <p class="titre_champs">Référence : </p>
                     <input class="champs_info" type="text" <?php
                     if (isset($_SESSION['ref_mdf'])) {
-                        echo "value = '" . htmlentities($_SESSION['ref_mdf']) . "'"."readonly='readonly'";
+                        echo "value = '" . htmlentities($_SESSION['ref_mdf']) . "'" . "readonly='readonly'";
                     }
                     ?>>
-                <?php
-                if (isset($_SESSION["msg_reference_mat"])) {
+                    <?php
+                    if (isset($_SESSION["msg_reference_mdf"])) {
 
-                    echo "<p class='erreur'>" . $_SESSION["msg_reference_mat"] . "</p>";
-                }
-                ?>
-                <br>
+                        echo "<p class='erreur'>" . $_SESSION["msg_reference_mdf"] . "</p>";
+                    }
+                    ?>
 
-                <br>
-               
+
                 </div>
 
                 <div id="description">
@@ -102,17 +102,16 @@
                     ?></textarea>
                 </div>
             </div>
-            <br>
-            <br>
+
             <div id="div_boutton">
                 <button type="submit" id="boutton_ajout">modifier</button>
             </div>
         </div>
     </form>
     </div>
-    <?php 
+    <?php
     require "footer.html"
-    ?>
+        ?>
 </body>
 
 </html>

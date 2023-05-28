@@ -55,6 +55,7 @@ th {
     max-height: 500px;
     overflow: hidden;
     overflow-y: scroll;
+    margin-top: 3%;
 }
 
 #div_table_validation_fini {

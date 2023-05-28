@@ -44,7 +44,7 @@
                 echo "<p class='ligne_info'><span id='type'>Type : </span>" . $all["type"] . "</p>";
 
                 $_SESSION["ref_mat_cmd"] = $all["reference"];
-                echo "<p class='ligne_info'><span id='description'>Description : </span><br><br>" . $all["description"] . "</p>";
+                echo "<p class='ligne_info'><span id='description'>Description : </span><p class='saut_ligne'>" . $all["description"] . "</p></p>";
                 ?>
             </div>
         </div>

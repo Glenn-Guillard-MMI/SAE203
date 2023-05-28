@@ -22,7 +22,7 @@
         $result = mysqli_query($link, $query);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<div class='div_img'>";
-            echo "<img class='img_product' src='images/" . $row['reference'] . ".jpg'" . " alt='caméra'>";
+            echo "<img class='img_product' src='images/" . $row['reference'] . ".jpg'" . " alt='produit récemment ajouté'>";
             echo "</div>";
 
 

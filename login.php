@@ -28,6 +28,7 @@ if (!empty($_SESSION['email']) and !empty($_SESSION['pwd'])) {
     //Revoit si cela est faux
     else {
         mysqli_close($link);
+        $_SESSION["pb_co"] = "votre mail ou votre mot de passe semble incorrect";
         header("Location: index.php");
         exit();
     }

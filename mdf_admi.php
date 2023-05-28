@@ -9,7 +9,6 @@ if (!empty($_POST['nom']) && !empty($_POST['type']) && !empty($_POST['descriptio
     $_SESSION['description_mdf'] = $_POST['description'];
 
 
-
     //Récupe de toute les fonction
     require 'fonction.php';
 
@@ -21,7 +20,17 @@ if (!empty($_POST['nom']) && !empty($_POST['type']) && !empty($_POST['descriptio
     }
 
     //Vérif type du matériel
-    if (!verif_list($_SESSION['type_mdf'], ["Caméra", "Micro", "Light"])) {
+    if (
+        !verif_list($_SESSION['type_mdf'], $liste = [
+            "Caméra",
+            "Micro",
+            "Light",
+            "PC",
+            "Casque",
+            "Trépied",
+            "projecteur"
+        ])
+    ) {
         $_SESSION["msg_type_mdf"] = "Le type du matériel n'est pas valide";
     } else {
         $_SESSION["msg_type_mdf"] = null;
