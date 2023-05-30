@@ -1,0 +1,92 @@
+"reference","nom","type","description"
+"BENRO","TRÉPIED BENRO SLIM ALUMINIUM avec support smartphone et tablette","Trépied","Idéal pour la fixation de la caméra 360° ou d&amp;amp;amp;amp;#039;un smartphone/tablette.
+
+
+Charge maximale : 4 kg
+
+Corps de trépied en magnésium avec 3 positions de réglage 
+
+Hauteur max (24°) avec colonne dépliée : 57.6 cm
+
+Hauteur max (24°) avec colonne repliée : 48.4 cm
+
+Hauteur min : 15.7 cm
+
+Hauteur max : 57.6 cm
+
+Taille replié : 20.1 cm
+
+Système de verrouillage : bague à vis
+
+Tête rotule amovible 
+
+Plateau rapide en aluminium anodisé 
+
+Diamètre colonne centrale : 20 mm
+
+Niveau à bulle 
+
+Avec housse de transport
+
+Poids : 2.6 kg"
+"DELL_1","Les PC de gaming Del","Caméra","Disque dur:            1To SSD M2 NVME 
+
+RAM:                      64 Go DDR4
+
+Carte Graphique:    Nvidia Quadro RTX 4000 8Go
+
+Processeur:            Intel Xeon Silver 4210"
+"HYPERX_1","Microphone de gaming HYPERX QUADCAST à quatre diagrammes polaires","Micro","Pour enregistrer des sons lors du développement de jeux vidéos.
+
+
+Sélection entre quatre diagrammes polaires
+
+Pied amortisseur contre les vibrations
+
+Capteur de fonction mute par pression et témoin LED
+
+Molette de réglage du contrôle de gain pratique
+
+Filtre anti-pop interne
+
+Prise casque intégrée
+
+Compatibilité multi-dispositif et chat
+
+Contient un adaptateur de pied"
+"Oculus_1","Les casques Oculus Quest ","Casque","Casque de réalité virtuelle tout-en-un, utilisable avec ou sans fil.
+
+Stockage:              256 Go
+
+RAM:                     6 Go
+
+Processeur:           Qualcomm Snapdragon XR2
+
+écran LCD :           Résolution de 1832 x 1920 pixels par oeil
+
+Haut-parleurs:       intégrés pour une immersion à 360°
+
+Angle de vision:    120° (horizontal)
+
+
+Chaque casque est accompagné de:
+
+2 manettes Touch
+
+Câble de chargement
+
+Adaptateur secteur
+
+Espacement pour lunettes
+
+Câble Oculus Link (pour le lier au PC, pratique pour le développement)"
+"email","reference","numero","date_debut","date_fin","autorisation"
+"jerome.fabre77@gmail.com","DELL_1","22","2000-02-20","2200-02-02","1"
+"jerome.fabre77@gmail.com","Oculus_1","23","2023-05-08","2023-05-13","0"
+"jerome.fabre77@gmail.com","Oculus_1","24","2023-05-03","2023-05-31","0"
+"jerome.fabre77@gmail.com","Oculus_1","25","2023-05-01","2023-08-31","0"
+"email","first_name","last_name","password","birth","admin"
+"glenn.guillard@gmail.com","Glenn","Guillard","e69e86d752d6cf55a13b01a61625e1f6535b7987c93c2041dc642bbd146ad98f","2004-01-30","0"
+"jerome.fabre77@gmail.com","Jérôme","Fabre","a46104d5a0ebe0e22751012f24a3399e8a3ff1c6bbf5c8835d0673990cd464a4","2004-11-07","1"
+"test@gmail.com","Test","Test","9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08","2004-11-07","0"
+"thomashenry7750@gmail.com","Henry","Thomas","35c46e43e947ddea38d543777af5812f4e2f64b09d94b055f882953d7c528464","0000-00-00","1"
